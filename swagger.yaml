@@ -1,0 +1,47 @@
+swagger: '2.0'
+info:
+  title: Rock-Paper-Scissors-Lizard-Spock Game API
+  version: 1.0.0
+paths:
+  /play:
+    post:
+      summary: Play the Rock-Paper-Scissors-Lizard-Spock game
+      description: |
+        Sends the user's choice of game item to the server, which responds with the computer's choice and the result of the game.
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: choice
+          description: The user's choice of game item (rock, paper, scissors, lizard, or spock)
+          required: true
+          schema:
+            type: object
+            properties:
+              choice:
+                type: string
+                enum: [rock, paper, scissors, lizard, spock]
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              user_choice:
+                type: string
+                enum: [rock, paper, scissors, lizard, spock]
+                description: The user's choice of game item
+              computer_choice:
+                type: string
+                enum: [rock, paper, scissors, lizard, spock]
+                description: The computer's choice of game item
+              result:
+                type: string
+                enum: [win, lose, tie]
+                description: The result of the game (win, lose, or tie)
+        '400':
+          description: Invalid choice
+        '500':
+          description: Internal server error
