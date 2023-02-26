@@ -7,7 +7,7 @@ form.addEventListener('submit', async (event) => {
   const formData = new FormData(form);
   const choice = formData.get('choice');
 
-  const response = await fetch('http://127.0.0.1:5000/play', {
+  const response = await fetch('/play', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
